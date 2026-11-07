@@ -8,7 +8,9 @@ body {
       color: #eeeee4;
     }
     .textDiv{background: #075787; padding: 10px; border: 2px solid; border-radius: 9px;}
-
+a {color: #eeeee4; font-weight: normal;}
+   a:visited {color: #eeeee4; font-weight: normal;}
+   a:hover {color: #eeeee4; font-weight: bold;}
     h1, h2 { color: #abdbe3; }
     pre {
         background: #0e76ab;

@@ -11,6 +11,10 @@
     <p>Tämän viikon tehtävänä oli luoda sivu, jolla on käyntilaskuri. <br/>
 Laskuri luku haetaan Mariadb-tietokannasta käyttämällä pythonia.<br/>
     </p>
+<p> Sivun latautuessa suoritetaan python-koodi, joka ottaa yhteyden tietokantaan, päivittää tietokannan kävijälaskurin arvon yhden suuremmaksi ja palauttaa tiedon sivulle.
+Koodissa on myös välimuistin siivous, jottei sivu vahingossa saa vanhentunutta kävijätietoa tietokannasta. 
+Koodin toimintaa varten palvelimelle piti asentaa python-virtuaaliympäristö (venv), python-paketinhallinnan (pip), gunicorn ja PyMySQL, sekä Mariadb-tietokanta.</p>
+<p> Lopuksi server on rebootattu ja testattu, että kävijälaskurin luku varmasti säilyy ja säilyihän se.
 
     <p>Sivun latauksia: {{ kaynnit }}</p>
     <p><a href="/">Viikon 1 etusivulle</a></p>
