@@ -20,17 +20,17 @@ def kasvata_laskuria():
         unix_socket="/run/mysqld/mysqld.sock",
         user="viikko2app",
         password=os.environ["DB_PASSWORD"],
-        database="viikko2",
+        database="visits",
         charset="utf8mb4",
         autocommit=False,
     )
     try:
         with yhteys.cursor() as kursori:
             kursori.execute(
-                "UPDATE laskuri SET kaynnit = kaynnit + 1 WHERE id = 1"
+                "UPDATE visits SET visits = visits + 1 WHERE id = 1"
             )
             kursori.execute(
-                "SELECT kaynnit FROM laskuri WHERE id = 1"
+                "SELECT visits FROM visits WHERE id = 1"
             )
             kaynnit = kursori.fetchone()[0]
         yhteys.commit()
