@@ -6,28 +6,23 @@ set -euo pipefail
 
 #funktio levytilan tarkistukseen
 check_space() {
-	disk_percent=$(df -P / | awk 'NR == 2 {print $5}') #prosentteina minkä verran kovalevytilaa on käytössä
+	
 
-	percent_number=${disk_percent%\%} #erotetaan pelkkä luku vertailua varten
-
-	if (( percent_number < 80 )); then
+	if (( $1 < 80 )); then
   		echo "<span class='ok'><strong> OK ($disk_percent)</strong></span>"
 	else
   		echo "<span class='warning'><strong>WARNING ($disk_percent)</strong></span>"
 	fi
 }
 
-manual_test() {
-	if (( $1 < 80 )); then
-  		echo "<span class='ok'><strong> OK ($1)</strong></span>"
-	else
-  		echo "<span class='warning'><strong>WARNING ($1)</strong></span>"
-	fi
-
 timestamp=$(TZ=Europe/Helsinki date '+%Y-%m-%d %H:%M:%S %Z (%:z)') # aikaleima ajohetkellä Suomen aikavyöhykkeellä
 uptime=$(uptime -p) #päälläoloaika, esim. 1d, 2hours 3minutes
 
-disk_status=$(check_space)
+disk_percent=$(df -P / | awk 'NR == 2 {print $5}') #prosentteina minkä verran kovalevytilaa on käytössä
+
+percent_number=${disk_percent%\%} #erotetaan pelkkä luku vertailua varten
+
+disk_status=$(check_space $percent_number)
 
 ramfree=$(free -h | grep Mem: | awk '{print $4}') # vapaa muisti
 ramfree="${ramfree}B" #koska tulos on esim. 7.0Gi, lisätään vielä perään B
@@ -160,12 +155,12 @@ polku/skripti.sh - suoritettava skripti <br />
                     <tr>
                         <td>50%</td>
                         <td>OK</td>
-                        <td><span class='ok'> manual_test(50) </span></td>
+                        <td><span class='ok'> check_space(50) </span></td>
                     </tr>
                     <tr>
-                        <td class='last'>85%</td>
+                        <td class='last'>80%</td>
                         <td class='last'>WARNING</td>
-                        <td class='last'> manual_test(85) </td>
+                        <td class='last'> check_space(80) </td>
                     </tr>
             </table>
         </div>
