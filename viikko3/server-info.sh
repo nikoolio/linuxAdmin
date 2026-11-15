@@ -11,7 +11,7 @@ disk_percent=$(df -P / | awk 'NR == 2 {print $5}') #prosentteina minkä verran k
 percent_number=${disk_percent%\%} #erotetaan pelkkä luku vertailua varten
 
 if (( percent_number < 80 )); then
-  disk_status="<span class='ok'><strong>OK ($disk_percent)</strong></span>"
+  disk_status="<span class='ok'><strong> OK ($disk_percent)</strong></span>"
 else
   disk_status="<span class='warning'><strong>WARNING ($disk_percent)</strong></span>"
 fi
