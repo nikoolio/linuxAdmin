@@ -4,17 +4,23 @@ set -euo pipefail
 # -u: skripti pysähtyy, jos siinä käytetään määrittelemätöntä muuttujaa
 # -o pipefail: komentoputken virhe huomioidaan, vaikka virheen aiheuttanut komento ei olisi putken viimeinen
 
+#funktio levytilan tarkistukseen
+check_space() {
+	disk_percent=$(df -P / | awk 'NR == 2 {print $5}') #prosentteina minkä verran kovalevytilaa on käytössä
+
+	percent_number=${disk_percent%\%} #erotetaan pelkkä luku vertailua varten
+
+	if (( percent_number < 80 )); then
+  		echo "<span class='ok'><strong> OK ($disk_percent)</strong></span>"
+	else
+  		echo "<span class='warning'><strong>WARNING ($disk_percent)</strong></span>"
+	fi
+}
+
 timestamp=$(TZ=Europe/Helsinki date '+%Y-%m-%d %H:%M:%S %Z (%:z)') # aikaleima ajohetkellä Suomen aikavyöhykkeellä
 uptime=$(uptime -p) #päälläoloaika, esim. 1d, 2hours 3minutes
-disk_percent=$(df -P / | awk 'NR == 2 {print $5}') #prosentteina minkä verran kovalevytilaa on käytössä
 
-percent_number=${disk_percent%\%} #erotetaan pelkkä luku vertailua varten
-
-if (( percent_number < 80 )); then
-  disk_status="<span class='ok'><strong> OK ($disk_percent)</strong></span>"
-else
-  disk_status="<span class='warning'><strong>WARNING ($disk_percent)</strong></span>"
-fi
+disk_status=$(check_space)
 
 ramfree=$(free -h | grep Mem: | awk '{print $4}') # vapaa muisti
 ramfree="${ramfree}B" #koska tulos on esim. 7.0Gi, lisätään vielä perään B
