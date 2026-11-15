@@ -50,7 +50,7 @@ cat << EOF > /var/www/html/viikko3/index.html
                         <td>Levyn tila: $disk_status</td>
                     </tr>
                     <tr>
-                        <td> RAM vapaana / yhteensä: $ramfree / $ramtotal </td>
+                        <td class="last"> RAM vapaana / yhteensä: $ramfree / $ramtotal </td>
                     </tr>
             </table>
         </div>
@@ -116,55 +116,45 @@ cat << EOF > /var/www/html/viikko3/index.html
     <div class="textDiv">
         <h2>Scheduling</h2>
         <p>
-            TODO: State whether you used cron or a systemd timer.
-            Explain the schedule and how you ensured that it
-            continues after a reboot.
+            Käytin ajastamiseen cronia. Cron on tavallisesti aina käynnissä ja se säilyy uudelleen käynnistämisen yli. Tilan voi tarkistaa komennolla <code>systemctl is-enabled cron</code><br />
+	    Jos tila ei ole enabled, sen voi laittaa päälle komennolla <code>sudo systemctl enable --now cron</code> <br />
+	<code>* * * * * /bin/bash polku/skripti.sh >> /home/ubuntu/server-info-cron.log 2>&1</code> <br />
+	* * * * * - tarkoittaa, että skripti jokainen minuutti. Jos skripti haluttaisiin ajaa vaikkapa 10 minuutin välein, laitettaisiin */10 * * * * <br/>
+/bin/bas - käynnistää bashin <br />
+polku/skripti.sh - suoritettava skripti <br />
+>> home/ubuntu/server-info-cron.log - kirjoittaa uuden lokitiedon tiedoston loppuun, ei poista aiempaa lokitietoa
+2>&1 - myös virhetiedot kirjoitetaan samaan lokiin.
+
         </p>
     </div>
 
     <div class="textDiv">
-        <h2>Test results</h2>
+        <h2>Testitulokset</h2>
 
-        <h3>Syntax check and manual execution</h3>
+        <h3>Syntaksin tarkistus ja testitulokset</h3>
         <p>
             TODO: Describe the results of running
             <code>bash -n report.sh</code>
             and executing the script manually.
         </p>
 
-        <h3>Disk space status tests</h3>
+        <h3>Levytilan status -testi</h3>
         <p>
-            TODO: Test the status logic using temporary input values.
-            Record your actual results below and restore real disk
-            usage afterwards.
+            Levytilan muutoksen testauksessa ajoin manuaalisesti arvoksi 50% ja 85%, jotta saan varmuuden, että tarvittaessa status muuttuu oikein.
         </p>
 
         <div class="table-container">
             <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Test input</th>
-                        <th scope="col">Expected status</th>
-                        <th scope="col">Actual status</th>
-                    </tr>
-                </thead>
-                <tbody>
                     <tr>
                         <td>50%</td>
                         <td>OK</td>
-                        <td>TODO</td>
+                        <td><span class='ok'>OK</span></td>
                     </tr>
                     <tr>
-                        <td>80%</td>
+                        <td>85%</td>
                         <td>WARNING</td>
-                        <td>TODO</td>
+                        <td><span class='warning'>OK</span></td>
                     </tr>
-                    <tr>
-                        <td>90%</td>
-                        <td>WARNING</td>
-                        <td>TODO</td>
-                    </tr>
-                </tbody>
             </table>
         </div>
 
@@ -184,11 +174,11 @@ cat << EOF > /var/www/html/viikko3/index.html
 
     <div class="textDiv">
         <h2>Ratkottu ongelma tai opittu asia</h2>
-        <p>Koko bash on vielä hyvin uutta, joten tehtävässä oli paljon uusia asioita. Se osaltaan teki tehtävän suorittamisesta todella työlästä.</p>
+        <p>Koko bash on vielä hyvin uutta, joten tehtävässä oli paljon uusia asioita. Se osaltaan teki tehtävän suorittamisesta todella työlästä. Lisäksi alkuun index.html-tiedoston kirjoittaminen ei onnistunut, mutta oikeuksien korjauksella se saatiin hoidettua.</p>
     </div>
 
     <footer>
-        <p><a href="">Tehtävän github</a></p>
+        <p><a href="https://github.com/nikoolio/linuxAdmin/tree/main/viikko3">Tehtävän github</a></p>
 		<p><a href="/">Pääsivulle (ensimmäisen viikon tehtävä)</a></p>
     </footer>
 </body>
