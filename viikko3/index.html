@@ -12,42 +12,22 @@
         <p>Tehtävänä oli linuxin bash-skriptauksen avulla luoda sivu, joka näyttää palvelimen tilan.<br/>Tiedot päivitetään kerran minuutissa.</p>
 
     <div class="textDiv">
-        <h2>Current server status</h2>
+        <h2>Palvelimen tila</h2>
 
         <div class="table-container">
             <table>
-                <thead>
                     <tr>
-                        <th scope="col">Information</th>
-                        <th scope="col">Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Report generated</th>
-                        <td></td>
+                        <td>Raportti luotu $timestamp</td>
                     </tr>
                     <tr>
-                        <th scope="row">Server uptime</th>
-                        <td></td>
+                        <td>Palvelin ollut päällä: $uptime</td>
                     </tr>
                     <tr>
-                        <th scope="row">Root filesystem disk usage</th>
-                        <td></td>
+                        <td>Levyn tila: $disk_status</td>
                     </tr>
                     <tr>
-                        <th scope="row">Disk space status</th>
-                        <td></td>
+                        <td> RAM vapaana/yhteensä: $ramfree / $ramtotal MiB</td>
                     </tr>
-                    <tr>
-                        <th scope="row">Total RAM</th>
-                        <td> MiB</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Available RAM</th>
-                        <td> MiB</td>
-                    </tr>
-                </tbody>
             </table>
         </div>
 
@@ -62,7 +42,7 @@
     </div>
 
     <div class="textDiv">
-        <h2>Commands used</h2>
+        <h2>Käytetyt komennot</h2>
         <ul>
             <li>
                 <code>date</code>:
