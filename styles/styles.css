@@ -7,8 +7,19 @@ body {
       background: #022b5f;
       color: #eeeee4;
     }
-    .textDiv{background: #075787; padding: 10px; border: 2px solid; border-radius: 9px;}
-a {color: #eeeee4; font-weight: normal;}
+    .textDiv{
+        background: #075787; 
+        padding: 10px; border: 2px solid; border-radius: 9px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+a {
+    color: #eeeee4; 
+    background: #075787; 
+    font-weight: normal; 
+    padding: 10px;
+    border-radius: 9px;
+}
    a:visited {color: #eeeee4; font-weight: normal;}
    a:hover {color: #eeeee4; font-weight: bold;}
     h1, h2 { color: #abdbe3; }
