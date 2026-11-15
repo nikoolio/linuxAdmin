@@ -60,3 +60,15 @@ th.last, td.last
 {
     border: none;
 }
+
+span.ok
+{
+    color:green;
+    font-weight: blod;
+}
+
+span.warning
+{
+    color:red;
+    font-weight: blod;
+}
