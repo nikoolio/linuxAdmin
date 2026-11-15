@@ -11,9 +11,9 @@ disk_percent=$(df -P / | awk 'NR == 2 {print $5}') #prosentteina minkä verran k
 percent_number=${disk_percent%\%} #erotetaan pelkkä luku vertailua varten
 
 if (( percent_number < 80 )); then
-  disk_status="<span class='ok'>OK ($disk_percent)</span>"
+  disk_status="<span class='ok'><strong>OK ($disk_percent)</strong></span>"
 else
-  disk_status="<span class='warning'>WARNING ($disk_percent)</span>"
+  disk_status="<span class='warning'><strong>WARNING ($disk_percent)</strong></span>"
 fi
 
 ramfree=$(free -h | grep Mem: | awk '{print $4}') # vapaa muisti
@@ -133,9 +133,8 @@ polku/skripti.sh - suoritettava skripti <br />
 
         <h3>Syntaksin tarkistus ja testitulokset</h3>
         <p>
-            TODO: Describe the results of running
-            <code>bash -n report.sh</code>
-            and executing the script manually.
+            
+            Komento <code>bash -n report.sh</code> ei havainnut skriptissä virhettä. Skriptin manuaalinen ajo päivitti index.html:n.
         </p>
 
         <h3>Levytilan status -testi</h3>
@@ -151,24 +150,28 @@ polku/skripti.sh - suoritettava skripti <br />
                         <td><span class='ok'>OK</span></td>
                     </tr>
                     <tr>
-                        <td>85%</td>
-                        <td>WARNING</td>
-                        <td class='last'><span class='warning'>OK</span></td>
+                        <tdclass='last'>85%</td>
+                        <tdclass='last'>WARNING</td>
+                        <td class='last'><span class='warning'>WARNING</span></td>
                     </tr>
             </table>
         </div>
 
         <h3>Automatic updates</h3>
         <p>
-            TODO: Record the generation times of at least two
-            consecutive automatic updates.
+            Kaksi viimeistä riviä lokista:<br />
+<pre>2026-11-15T19:41:01.598141+00:00 linux-server CRON[6373]: (ubuntu) CMD (/bin/bash /home/ubuntu/linuxAdmin/viikko3/server-info.sh >> /home/ubuntu/server-info-cron.log 2>&1)<br />
+2026-11-15T19:42:01.646843+00:00 linux-server CRON[6391]: (ubuntu) CMD (/bin/bash /home/ubuntu/linuxAdmin/viikko3/server-info.sh >> /home/ubuntu/server-info-cron.log 2>&1)<br /></pre>
         </p>
 
-        <h3>Reboot test</h3>
+        <h3>Uudelleenkäynnistyksen testi</h3>
         <p>
-            TODO: Record when you rebooted the VM and whether the
-            Week 2 application and Week 3 page opened afterwards.
-            Include evidence that the report continued to update.
+            Ote lokista osoittaa, että komennon suoritus jatkui uudelleenkäynnistyksen jälkeen: <br />
+<pre>2026-11-15T19:43:01.692673+00:00 linux-server CRON[6422]: (ubuntu) CMD (/bin/bash /home/ubuntu/linuxAdmin/viikko3/server-info.sh >> /home/ubuntu/server-info-cron.log 2>&1)
+2026-11-15T19:44:01.737176+00:00 linux-server CRON[6440]: (ubuntu) CMD (/bin/bash /home/ubuntu/linuxAdmin/viikko3/server-info.sh >> /home/ubuntu/server-info-cron.log 2>&1)
+2026-11-15T19:47:17.725005+00:00 linux-server cron[1072]: (CRON) INFO (pidfile fd = 3)
+2026-11-15T19:47:18.218298+00:00 linux-server cron[1072]: (CRON) INFO (Running @reboot jobs)
+2026-11-15T19:48:01.235788+00:00 linux-server CRON[1460]: (ubuntu) CMD (/bin/bash /home/ubuntu/linuxAdmin/viikko3/server-info.sh >> /home/ubuntu/server-info-cron.log 2>&1)</pre>
         </p>
     </div>
 
