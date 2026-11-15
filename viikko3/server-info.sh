@@ -9,9 +9,9 @@ check_space() {
 	
 
 	if (( $1 < 80 )); then
-  		echo "<span class='ok'><strong> OK ($disk_percent)</strong></span>"
+  		echo "<span class='ok'><strong> OK ($1%)</strong></span>"
 	else
-  		echo "<span class='warning'><strong>WARNING ($disk_percent)</strong></span>"
+  		echo "<span class='warning'><strong>WARNING ($1%)</strong></span>"
 	fi
 }
 
@@ -153,14 +153,19 @@ polku/skripti.sh - suoritettava skripti <br />
         <div class="table-container">
             <table>
                     <tr>
-                        <td>50%</td>
-                        <td>OK</td>
-                        <td><span class='ok'> check_space(50) </span></td>
+                         <td class='otsikko first'>Testiarvo</td>
+                         <td class='otsikko second'>Odotusarvo</td>
+                         <td class='otsikko'>Testin tulos</td>
                     </tr>
                     <tr>
-                        <td class='last'>80%</td>
-                        <td class='last'>WARNING</td>
-                        <td class='last'> check_space(80) </td>
+                        <td class='first'>50%</td>
+                        <td class='second'>OK</td>
+                        <td><span class='ok'> $(check_space 50) </span></td>
+                    </tr>
+                    <tr>
+                        <td class='last first'>80%</td>
+                        <td class='last second'>WARNING</td>
+                        <td class='last'> $(check_space 80) </td>
                     </tr>
             </table>
         </div>
