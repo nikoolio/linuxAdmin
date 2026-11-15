@@ -150,8 +150,8 @@ polku/skripti.sh - suoritettava skripti <br />
                         <td><span class='ok'>OK</span></td>
                     </tr>
                     <tr>
-                        <tdclass='last'>85%</td>
-                        <tdclass='last'>WARNING</td>
+                        <td class='last'>85%</td>
+                        <td class='last'>WARNING</td>
                         <td class='last'><span class='warning'>WARNING</span></td>
                     </tr>
             </table>
