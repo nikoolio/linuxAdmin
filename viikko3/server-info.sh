@@ -17,6 +17,13 @@ check_space() {
 	fi
 }
 
+manual_test() {
+	if (( $1 < 80 )); then
+  		echo "<span class='ok'><strong> OK ($1)</strong></span>"
+	else
+  		echo "<span class='warning'><strong>WARNING ($1)</strong></span>"
+	fi
+
 timestamp=$(TZ=Europe/Helsinki date '+%Y-%m-%d %H:%M:%S %Z (%:z)') # aikaleima ajohetkellä Suomen aikavyöhykkeellä
 uptime=$(uptime -p) #päälläoloaika, esim. 1d, 2hours 3minutes
 
@@ -153,12 +160,12 @@ polku/skripti.sh - suoritettava skripti <br />
                     <tr>
                         <td>50%</td>
                         <td>OK</td>
-                        <td><span class='ok'>OK</span></td>
+                        <td><span class='ok'> manual_test(50) </span></td>
                     </tr>
                     <tr>
                         <td class='last'>85%</td>
                         <td class='last'>WARNING</td>
-                        <td class='last'><span class='warning'>WARNING</span></td>
+                        <td class='last'> manual_test(85) </td>
                     </tr>
             </table>
         </div>
