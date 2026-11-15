@@ -9,7 +9,9 @@ body {
     }
     .textDiv{
         background: #075787; 
-        padding: 10px; border: 2px solid; border-radius: 9px;
+        padding: 10px; 
+        border: 2px solid; 
+        border-radius: 9px;
         margin-top: 10px;
         margin-bottom: 10px;
     }
@@ -20,13 +22,32 @@ a {
     padding: 10px;
     border-radius: 9px;
 }
-   a:visited {color: #eeeee4; font-weight: normal;}
-   a:hover {color: #eeeee4; font-weight: bold;}
-    h1, h2 { color: #abdbe3; }
-    pre {
-        background: #0e76ab;
-        padding: 16px;
-        overflow-x: auto;
-        border:black solid 2px;
-        border-radius: 5px;
-   }
+a:visited {
+    color: #eeeee4; 
+    font-weight: normal;
+}
+a:hover {
+    color: #eeeee4; 
+    font-weight: bold;
+}
+
+h1, h2 { 
+    color: #abdbe3; 
+}
+
+pre {
+    background: #0e76ab;
+    padding: 16px;
+    overflow-x: auto;
+    border:black solid 2px;
+    border-radius: 5px;
+}
+
+table {
+    border: 2px solid white;
+    border-radius: 4px;
+}
+
+th, td{
+    border-bottom: 1px dashed white;
+}
