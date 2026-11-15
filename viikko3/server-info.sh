@@ -102,13 +102,13 @@ cat << EOF > /var/www/html/viikko3/index.html
 	    | välittää df-komennon tulosteen awk:lle <br />
 	    awk käsittelee tulostetta riveittäin ja sarakkeittain <br />
 	    NR == 2 valitsee toisen rivin, jolla tiedot ovat, ensimmäisellä rivillä ovat sarakkeiden otsikot <br />
-	    $5 ottaa tiedon viidennestä sarakkeesta. <br />
+	    &#36;5 ottaa tiedon viidennestä sarakkeesta. <br />
 	    print tulostaa arvon. <br />
         </p>
 	<p>
 	   free -h hakee RAM-muistin käyttötilanteen ja näyttää määrät luettavina yksiköinä, esim. 6.5Gi <br />
 	   grep Mem: poimii tulosteesta muistia kuvaavan Mem:-rivin. <br />
-	   awk '{print $2} tulostaa rivin toisen sarakkeen arvon, joka on muistin kokonaismäärä. $4 viittaa vapaaseen muistiin.<br />
+	   awk '{print &#36;2} tulostaa rivin toisen sarakkeen arvon, joka on muistin kokonaismäärä. &#36;4 viittaa vapaaseen muistiin.<br />
 	</p>
 
     </div>
