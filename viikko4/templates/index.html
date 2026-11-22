@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Viikko 4</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+<div class="textDiv">
+    <h1>Viikko 4: Palvelimen kloonaus, varmuuskopiot ja tietokannan kopiointi</h1>
+    <p>Tällä viikolla tehtiin aiemmin tehdystä <a href="http://195.148.21.3" target="_blank">http-sivustosta</a> ja siinä käytetystä tietokannasta kopio. Sivustosta otetaan varmuuskopio tunnin välein. <br/>
+Laskurin luku haetaan Mariadb-tietokannasta käyttämällä pythonia.<br/>
+    </p>
+<p> Sivun latautuessa suoritetaan python-koodi, joka hakee kävijälaskurin tiedon tietokannasta. Tietokannan arvo tulee replikoituna <a href="http://195.148.21.3/viikko2" target="_blank">Viikon 2 tehtävän</a> tietokannan päivittyessä. Tämä sivu siis ei itsessään päivitä laskuria, vaan se päivittyy silloin, kun viikon 2 sivulla käydään. Jos päivität tämän sivun, laskuri ei kasva. Jos käyt linkistä sivulla (avautuu uuteen välilehteen) ja päivität sen jälkeen tämän sivun, huomaat lukeman päivittyneen.
+</p>
+<p> Lopuksi server on rebootattu ja testattu, että kävijälaskurin luku varmasti säilyy ja säilyihän se.
+
+    <p>Sivun latauksia: {{ kaynnit }}</p>
+    <p><a href="http://195.148.21.3">Koko viritelmän etusivulle</a></p>
+    <p><a href="https://github.com/nikoolio/LinuxAdmin" target="_blank">Kurssin github</a></p>
+</div>
+</body>
+</html>
