@@ -1,0 +1,10 @@
+0000000000000000000000000000000000000000 7895914b34550dcc9ad2e4465da984522a516425 nikoolio <328701565+nikoolio@users.noreply.github.com> 1794043200 +0000	commit (initial): Ensimmäinen commit
+7895914b34550dcc9ad2e4465da984522a516425 fbbba10496cd6cdab830205d86eaa04c1c62c016 nikoolio <328701565+nikoolio@users.noreply.github.com> 1794043363 +0000	commit: Adding Readme
+fbbba10496cd6cdab830205d86eaa04c1c62c016 fbbba10496cd6cdab830205d86eaa04c1c62c016 nikoolio <328701565+nikoolio@users.noreply.github.com> 1794043376 +0000	Branch: renamed refs/heads/master to refs/heads/main
+fbbba10496cd6cdab830205d86eaa04c1c62c016 c741cd7d197045a8962644d568fd8f0023113684 nikoolio <328701565+nikoolio@users.noreply.github.com> 1794045537 +0000	commit: Scriptin päivitys
+c741cd7d197045a8962644d568fd8f0023113684 b69b8cc34bc9905e7c9b5e56c00305231fcd08fb nikoolio <328701565+nikoolio@users.noreply.github.com> 1794047358 +0000	commit: lisätään templates/index.html repoon
+b69b8cc34bc9905e7c9b5e56c00305231fcd08fb 8d9425c1f46d02f49157885c97d75c35b7e80e2a nikoolio <328701565+nikoolio@users.noreply.github.com> 1794048768 +0000	commit: Päivitetty py-tiedostoon luotu tietokanta ja taulu
+8d9425c1f46d02f49157885c97d75c35b7e80e2a bf0db17c9f58cc2ce74ee2a235f7319056942ff8 nikoolio <328701565+nikoolio@users.noreply.github.com> 1794054315 +0000	commit: Valmis versio
+bf0db17c9f58cc2ce74ee2a235f7319056942ff8 267000543ed1d042e684bdf01816350320a79b30 nikoolio <328701565+nikoolio@users.noreply.github.com> 1794056243 +0000	commit: korjauksia css-tiedoston viittaukseen
+267000543ed1d042e684bdf01816350320a79b30 503ed870646cd19b21ad368a76eef00019bdf8e2 nikoolio <328701565+nikoolio@users.noreply.github.com> 1794056981 +0000	commit: Siirretty css-tiedosto pois templates-kansiosta ja laitettu static-kansioon, sekä korjattu viite oikeaksi
+503ed870646cd19b21ad368a76eef00019bdf8e2 4d144194de9df9e08c854f40b97e255cd50f7fcb nikoolio <328701565+nikoolio@users.noreply.github.com> 1794063206 +0000	commit: Tyylitiedoston muokkaus likkien osalta

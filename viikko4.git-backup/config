@@ -1,0 +1,14 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[user]
+	name = nikoolio
+	email = 328701565+nikoolio@users.noreply.github.com
+[remote "origin"]
+	url = https://github.com/nikoolio/linuxAdmin
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
