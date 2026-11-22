@@ -1,0 +1,15 @@
+[Unit]
+Description=Viikko4 viritelmä
+After=network.target mariadb.service
+Requires=mariadb.service
+
+[Service]
+User=ubuntu
+WorkingDirectory=/var/www/html/viikko4
+EnvironmentFile=/etc/viikko4.env
+ExecStart=/var/www/html/viikko4/.venv/bin/gunicorn --workers 2 --bind 127.0.0.1:5000 --access-logfile - --error-logfile - app:app
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
