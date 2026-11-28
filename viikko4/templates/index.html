@@ -16,8 +16,60 @@ Laskurin luku haetaan Mariadb-tietokannasta käyttämällä pythonia.<br/>
 <p> Lopuksi server on rebootattu ja testattu, että kävijälaskurin luku varmasti säilyy ja säilyihän se.
 
     <p>Sivun latauksia: {{ kaynnit }}</p>
+</div>
+<div class="textDiv">
+
+<h2> B-palvelimen luominen</h2>
+<p> Palvelin B luotiin palvelimen A snapshotista cPoudan kautta.</p>
+<p>
+B-palvelimelle asennettiin ja määritettiin Flask-sovelluksen tarvitsemat palvelut sekä MariaDB. Flask-sovellus toimii Gunicornilla portissa 5000, ja Nginx välittää /viikko4/-osoitteeseen tulevat pyynnöt sovellukselle. B:n sovelluspalvelu on viikko4.service.
+</p>
+<p>
+MariaDB määritettiin B:llä A-palvelimen replikaksi. B:n palvelintunnus on 2, ja replikaation väliaikaisloki on mariadb-relay-bin. Tietokanta asetettiin read_only=ON-tilaan.
+</p>
+
+<h2>Tallennustila ja varmuuskopioiden sijainnit</h2>
+
+<p>A-palvelimen verkkosivuston tiedostot ovat hakemistossa <code>/var/www/html</code>. Varmuuskopiot siirretään A:lta B:lle rsync-komennolla SSH-yhteyden yli. B:llä varmuuskopioiden kohdehakemisto on:
+</p>
+<p>
+<code>
+/srv/backups/www-html
+</code>
+</p>
+<p>
+Hakemiston omistaja on wwwbackup, ja käyttöoikeudet ovat 700, joten hakemiston sisältöön pääsee vain sen omistaja. <br />
+A:n varmuuskopiointiasetukset tallennetaan Git-repositorion ulkopuolella olevaan tiedostoon:
+</p>
+<p>
+<code>
+/home/ubuntu/.config/backup-www-html.env
+</code>
+<p>
+Varmuuskopioinnin skripti on:
+</p>
+<p>
+<code>
+/home/ubuntu/backupscript.sh
+</code>
+</p>
+<h2>Käyttäjät, omistajuus ja oikeudet</h2>
+<p>Varmuuskopioinnin ajastuksen ja skriptin käyttäjä A:lla on <code>ubuntu</code>. B:llä varmuuskopioita varten on erillinen <code>wwwbackup</code>-käyttäjä. SSH-yhteydessä käytetään avainta <code>backupKey</code>.
+
+<p>B:n varmuuskopiohakemiston omistaa <code>wwwbackup</code>, ja sen oikeudet ovat <code>700</code>. Tietokannan replikointia varten A:lle luotiin erillinen MariaDB-käyttäjä <code>replicate</code>, jonka yhteydet rajattiin B-palvelimen IP-osoitteeseen. A:n palomuuri rajoittaa tietokantayhteydet B:n osoitteeseen.
+</p>
+<h2>Tuntivarmuuskopiointi ja jatkuva replikointi</h2>
+<p>Githubissa crontab.txt sisältää palvelimen A cronin, jolla varmuuskopiointi on ajastettu kerran tunnissa.</p>
+<p> Githubissa on myös kopio skriptistä. Skripti käyttää <code>flock</code>-lukitusta estääkseen päällekkäiset ajot ja Pythonia vanhojen varmuuskopioiden poistamiseen. Tavoitteena on säilyttää enintään 720 aikaleimattua kopiota eli 30 päivän tuntivarmuuskopiot. Kopiot siirretään SSH:n yli B:lle; jatkuva tietokannan replikointi ei korvaa historiallisia tiedostovarmuuskopioita.</p>
+
+<p>Tietokanta replikoituu jatkuvasti A:lta B:lle MariaDB:n binäärilokien avulla. A on ensisijainen palvelin, B replika. A:lla on server_id=1, binääriloki mariadb-bin ja binlog_format=ROW. B:llä on server_id=2 ja read_only=ON.</p>
+<p> Testitulokset löytyvät githubista viikon 4 readme.md:stä</p>
+<h2>Yksi kohdattu ongelma tai opittu asia</h2>
+<p>Kaikki oli uutta ja ihmeellistä, koska en ole puurtanut aiemmin palvelimien tai niiden varmuuskopiointien parissa.</p>
+<p>Esimerkiksi varmuuskopiointi-skripti ei toiminut aluksi, mutta se ratkesi lisäämällä <code> #!/bin/bash </code> skriptin alkuun.</p>
+</div>
+
     <p><a href="http://195.148.21.3">Koko viritelmän etusivulle</a></p>
     <p><a href="https://github.com/nikoolio/LinuxAdmin" target="_blank">Kurssin github</a></p>
-</div>
 </body>
 </html>
